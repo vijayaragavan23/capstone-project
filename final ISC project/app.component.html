@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .login{
+      display: flex;
+    justify-content: right;
+    
+    }
+  </style>
+</head>
+<body>
+  <mat-toolbar color="primary">
+    
+  <button mat-button routerLink=""> 
+    <mat-icon>home</mat-icon>
+    Home
+  </button>
+  <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
+    <button mat-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </ng-container>
+  
+  <ng-template #loginButton>
+    <button class="login" mat-button routerLink="login">
+    <mat-icon>login</mat-icon>
+    Login
+  </button>
+  </ng-template>
+  <button mat-button routerLink="signup">
+    <mat-icon>signup</mat-icon>
+    signup
+  </button>
+  <button mat-button routerLink="admin">
+    <mat-icon>Admin</mat-icon>
+    Admin
+  </button>
+</mat-toolbar>
+
+
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+</body>
+</html>
